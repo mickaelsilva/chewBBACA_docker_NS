@@ -4,14 +4,15 @@ WORKDIR /NGStools/
 RUN apt-get update
 RUN apt-get install psmisc
 #RUN apt-get install -y git make python-dev gcc wget libxml2-dev libxslt1-dev zlib1g-dev g++ build-essential
-RUN apt-get install -y git make python3 wget g++ build-essential python3-pip python3-numpy python3-scipy
+RUN apt-get install -y git make python3 wget g++ build-essential python3-pip
+# python3-numpy python3-scipy
 RUN which pip3
 #GET chewBBACA and Prodigal 
 RUN git clone https://github.com/hyattpd/Prodigal.git
 RUN git clone -b chewie_NS https://github.com/B-UMMI/chewBBACA.git
 #INSTALL chewBBACA requirements 
 WORKDIR /NGStools/chewBBACA
-RUN pip3 install -r requirements.txt
+RUN pip3 install -U -r requirements.txt
 #RUN pip3 install --upgrade numpy
 #INSTALL PRODIGAL 
 WORKDIR /NGStools/Prodigal
