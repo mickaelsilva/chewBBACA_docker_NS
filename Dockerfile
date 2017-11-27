@@ -7,6 +7,7 @@ RUN apt-get install psmisc
 RUN apt-get install -y git make python3 wget g++ build-essential python3-pip
 # python3-numpy python3-scipy
 RUN which pip3
+RUN python3 -m pip install --upgrade pip
 #GET chewBBACA and Prodigal 
 RUN git clone https://github.com/hyattpd/Prodigal.git
 RUN git clone -b chewie_NS https://github.com/B-UMMI/chewBBACA.git
