@@ -6,20 +6,19 @@ RUN apt-get install psmisc
 #RUN apt-get install -y git make python-dev gcc wget libxml2-dev libxslt1-dev zlib1g-dev g++ build-essential
 RUN apt-get install -y git make python3 python3-pip libatlas-base-dev wget g++ build-essential python3-numpy python3-scipy
 # python3-numpy python3-scipy
-RUN which pip3
 RUN python3 -m pip install --upgrade pip
-#GET chewBBACA and Prodigal 
+
+#GET training files and Prodigal 
 RUN git clone https://github.com/hyattpd/Prodigal.git
-RUN git clone -b chewie_NS https://github.com/B-UMMI/chewBBACA.git
+
 #INSTALL chewBBACA requirements 
-WORKDIR /NGStools/chewBBACA
-RUN pip3 install biopython
-RUN pip3 install plotly
-#RUN pip3 install --upgrade numpy
-#INSTALL PRODIGAL 
+RUN pip3 install biopython plotly SPARQLWrapper chewbbaca_ns
+
 WORKDIR /NGStools/Prodigal
 RUN make install
 WORKDIR /NGStools/
-#ADD chewBBACA TO PATH 
-ENV PATH="/NGStools/chewBBACA:${PATH}"
-ENV PATH="/NGStools/chewBBACA/utils/:$PATH"
+RUN git clone https://github.com/mickaelsilva/prodigal_training_files
+
+ENV PATH="/NGStools/prodigal_training_files/:${PATH}"
+
+RUN chewie_ns --version
