@@ -12,7 +12,7 @@ RUN python3 -m pip install --upgrade pip
 RUN git clone https://github.com/hyattpd/Prodigal.git
 
 #INSTALL chewBBACA requirements 
-RUN pip3 install biopython plotly SPARQLWrapper chewbbaca_ns
+RUN pip3 install biopython plotly SPARQLWrapper chewbbaca_nserver
 
 WORKDIR /NGStools/Prodigal
 RUN make install
